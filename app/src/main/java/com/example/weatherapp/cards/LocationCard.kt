@@ -1,9 +1,10 @@
 package com.example.weatherapp.cards
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -29,27 +30,54 @@ fun LocationCard() {
             .fillMaxWidth(1f)
 
     ) {
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Image(
-                painter = painterResource(R.drawable.ic_location),
-                contentDescription = "ic_location",
-                modifier = Modifier
-                    .fillMaxWidth(0.1f)
-                    .padding(all = 5.dp)
-            )
+            Row(
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_location),
+                    contentDescription = "ic_location",
+                    modifier = Modifier
+                        .fillMaxWidth(0.1f)
+                        .padding(all = 5.dp)
+                )
 //            Spacer(modifier = Modifier.padding(all = 5.dp))
-            Text(
-                text = "Gopiballavpur",
-                style = TextStyle.Default,
-                fontWeight = FontWeight(600),
-                fontSize = 25.sp,
-                color = Color.Black
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Gopiballavpur",
+                        style = TextStyle.Default,
+                        fontWeight = FontWeight(600),
+                        fontSize = 25.sp,
+                        color = Color.Black
 //                modifier = Modifier
 //                    .padding(all = 5.dp)
-                )
+                    )
+
+                    Row(
+                        horizontalArrangement = Arrangement.Start,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Lat : 34.00",
+                            color = Color(0,0,0)
+                        )
+                        Spacer(modifier = Modifier.padding(5.dp))
+                        Text(
+                            text = "Lon : 36.96",
+                            color = Color(0,0,0)
+                        )
+                    }
+                    Spacer(modifier = Modifier.padding(2.dp))
+                }
+            }
+
         }
     }
 }
