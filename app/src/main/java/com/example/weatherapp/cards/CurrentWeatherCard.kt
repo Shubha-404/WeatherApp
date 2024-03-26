@@ -16,11 +16,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.compose.rememberImagePainter
 import com.example.weatherapp.R
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -48,12 +51,19 @@ fun CurrentWeatherCard() {
                 modifier = Modifier
                     .background(Color(0,0,0,1))
             )
-            Image(
-                painter = painterResource(id = R.drawable.ic_rainshower),
+
+//            Image(
+//                painter = painterResource(id = R.drawable.ic_rainshower),
+//                contentDescription = null,
+//                modifier = Modifier
+//                    .fillMaxWidth(0.3f)
+//            )
+            AsyncImage(
+                model = "https://openweathermap.org/img/wn/01d@2x.png",
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth(0.3f)
-                )
+            )
 
             Row (
                 horizontalArrangement = Arrangement.Center,

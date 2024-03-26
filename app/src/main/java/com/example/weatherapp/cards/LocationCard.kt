@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
 
-@Preview(showSystemUi = true, showBackground = true)
+//@Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun LocationCard() {
+fun LocationCard(lat:Double,lon:Double, isLocationFetched:Boolean) {
     Card(
         modifier = Modifier
             .padding(all = 10.dp)
@@ -64,18 +64,28 @@ fun LocationCard() {
                         horizontalArrangement = Arrangement.Start,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            text = "Lat : 34.00",
-                            color = Color(0,0,0)
-                        )
-                        Spacer(modifier = Modifier.padding(5.dp))
-                        Text(
-                            text = "Lon : 36.96",
-                            color = Color(0,0,0)
-                        )
+                        if(isLocationFetched){
+                            Text(
+                                text = "Lat : ${lat}",
+                                color = Color(0,0,0)
+                            )
+                            Spacer(modifier = Modifier.padding(5.dp))
+                            Text(
+                                text = "Lon : ${lon}",
+                                color = Color(0,0,0)
+                            )
+                        }
+                        else{
+                            Text(
+                                text = "Location Fetching",
+                                color = Color(0,0,0)
+                            )
+                        }
+
                     }
                     Spacer(modifier = Modifier.padding(2.dp))
                 }
+
             }
 
         }
