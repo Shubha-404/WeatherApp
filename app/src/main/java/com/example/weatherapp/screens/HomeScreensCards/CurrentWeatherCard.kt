@@ -1,6 +1,5 @@
 package com.example.weatherapp.screens.HomeScreensCards
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,8 +21,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.focus.focusModifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
@@ -48,13 +44,16 @@ fun CurrentWeatherCard(weatherData : DataModels) {
 
     ) {
 
-        Column(     //upper Part of CurrentWeather card
+        Column(     //upper Part of CurrentWeather card i.e main temp & weather cond. part
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(87, 204, 153), shape = RoundedCornerShape(10.dp))
-                .padding(10.dp)
+                .background(
+                    Color(0, 38, 63, 150),
+                    shape = RoundedCornerShape(10.dp)
+                )
+                .padding(10.dp, 0.dp)
         ) {
             Spacer(modifier = Modifier.padding(all = 10.dp))
             Box(
@@ -64,7 +63,7 @@ fun CurrentWeatherCard(weatherData : DataModels) {
                     text = ceil(weatherData.main.temp - 273.0).toInt().toString(),
                     fontSize = 120.sp,
                     fontWeight = FontWeight(400),
-                    color = Color(2, 0, 60, 255),
+                    color = Color(255, 255, 255, 255),
                     modifier = Modifier
                         .background(Color(0,0,0,1))
                 )
@@ -72,7 +71,7 @@ fun CurrentWeatherCard(weatherData : DataModels) {
                     text = "      °",
                     fontSize = 110.sp,
                     fontWeight = FontWeight(400),
-                    color = Color(2, 0, 60, 255),
+                    color = Color(255, 255, 255, 255),
                     modifier = Modifier
                         .background(Color(0,0,0,1))
                 )
@@ -91,7 +90,7 @@ fun CurrentWeatherCard(weatherData : DataModels) {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .fillMaxWidth(0.45f)
-                        .background(Color(56, 163, 165,0), shape = RoundedCornerShape(10.dp))  //bde0fe
+                        .background(Color(56, 163, 165, 0), shape = RoundedCornerShape(10.dp))  //bde0fe
 
                 ){
                     Row(
@@ -111,14 +110,14 @@ fun CurrentWeatherCard(weatherData : DataModels) {
                             Text(text = weatherData.weather[0].main,
                                 fontSize = 17.sp,
                                 fontWeight = FontWeight(600),
-                                color = Color(0,0,0),
+                                color = Color(255, 255, 255, 255),
                                 modifier = Modifier
                                     .background(Color(0,0,0,1))
                             )
                             Text(text ="(" + weatherData.weather[0].description + ")",
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(400),
-                                color = Color(0,0,0),
+                                color = Color(255, 255, 255, 255),
                                 modifier = Modifier
                                     .background(Color(0,0,0,1))
                             )
@@ -131,7 +130,7 @@ fun CurrentWeatherCard(weatherData : DataModels) {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .fillMaxWidth(0.81f)
-                        .background(Color(56, 163, 165,0), shape = RoundedCornerShape(10.dp))  //bde0fe
+                        .background(Color(56, 163, 165, 0), shape = RoundedCornerShape(10.dp))  //bde0fe
                 ){
                     Row(
                         horizontalArrangement = Arrangement.End,
@@ -141,7 +140,7 @@ fun CurrentWeatherCard(weatherData : DataModels) {
                         Text(text = ceil(weatherData.main.temp_max - 273.0).toString() + "°C"+" / " + ceil(weatherData.main.temp_min - 273.0).toString() + "°C",
                             fontSize = 17.sp,
                             fontWeight = FontWeight(600),
-                            color = Color(0,0,0),
+                            color = Color(255, 255, 255, 255),
                             modifier = Modifier
                                 .background(Color(0,0,0,1))
                         )
@@ -150,18 +149,21 @@ fun CurrentWeatherCard(weatherData : DataModels) {
 
             }
             Spacer(modifier = Modifier.padding(10.dp))
+//            Box(modifier = Modifier.height(1.dp).fillMaxWidth().background(Color(0,0,0)))
         }
 
 
-        Spacer(modifier = Modifier.padding(10.dp).background(Color(0,0,0,255)))
+        Spacer(modifier = Modifier
+            .padding(10.dp)
+            .background(Color(0, 0, 0, 255)))
 
 
-        Column (
+        Column (    //Middle Part of CurrentWeather card i.e Extra info part
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth(1f)
-                .background(Color(56, 163, 165), shape = RoundedCornerShape(10.dp))
+                .background(Color(56, 163, 165, 0), shape = RoundedCornerShape(10.dp))
                 .padding(10.dp)
 
         ){
@@ -169,7 +171,8 @@ fun CurrentWeatherCard(weatherData : DataModels) {
             var title: String
             var value: String
             var unit: String
-            var color: Color = Color(0, 75, 85, 255)
+//            var color: Color = Color(0, 75, 85, 200)
+            var color: Color = Color(0, 0, 0, 150)
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically,
@@ -223,6 +226,7 @@ fun CurrentWeatherCard(weatherData : DataModels) {
                 Blob(image,title,value,unit,color)
             }
         }
+
     }
 }
 
@@ -234,18 +238,18 @@ fun Blob(
     title: String = "Air Pressure",
     value: String = "755",
     unit: String = "mmHg",
-    color: Color = Color(0, 75, 85, 255)
+    color: Color = Color(0, 75, 85, 150)
 ){
     Box(
         modifier = Modifier
             .background(
                 brush = Brush.radialGradient(
-                    colors = listOf(color, Color.Black),
+                    colors = listOf(color, Color(0, 0, 0, 200)),
                     radius = 120f
                 ),
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(20.dp)
             )
-            .height(120.dp)
+            .height(110.dp)
             .width(110.dp)
             .padding(10.dp)
     ){
@@ -257,12 +261,12 @@ fun Blob(
                 painter = image ,
                 contentDescription = "ic",
                 modifier = Modifier
-                    .fillMaxWidth(0.45f)
+                    .fillMaxWidth(0.4f)
                     .padding(1.dp)
             )
             Text(
                 text = title,
-                fontSize = 17.sp,
+                fontSize = 15.sp,
                 fontWeight = FontWeight(400),
                 color = Color(255, 255, 255, 205),
                 modifier = Modifier
@@ -275,7 +279,7 @@ fun Blob(
             ) {
                 Text(
                     text = (value),
-                    fontSize = 28.sp,
+                    fontSize = 26.sp,
                     fontWeight = FontWeight(600),
                     color = Color(255, 255, 255, 255),
                     modifier = Modifier
@@ -284,7 +288,7 @@ fun Blob(
                 )
                 Text(
                     text = (" " + unit),
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     fontWeight = FontWeight(500),
                     color = Color(255, 255, 255, 255),
                     modifier = Modifier
