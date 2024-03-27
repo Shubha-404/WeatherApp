@@ -27,7 +27,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 
 @Composable
-fun App(loc:LatandLong) {
-    HomeScreen(loc.latitude,loc.longitude,loc.isLocationFetched)
+fun App(userLocation:LatandLong) {
+    HomeScreen(userLocation)
 }
 

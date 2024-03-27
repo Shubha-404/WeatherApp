@@ -15,3 +15,6 @@ data class DataModels(
     val weather: List<Weather>,
     val wind: Wind
 )
+
+
+//i guess I need to add rain later...
